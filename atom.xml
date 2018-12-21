@@ -5,9 +5,9 @@
   
   <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="https://swaggymiller.github.io/blog/"/>
+  <link href="https://swaggymiller.github.io/"/>
   <updated>2018-12-21T03:06:00.322Z</updated>
-  <id>https://swaggymiller.github.io/blog/</id>
+  <id>https://swaggymiller.github.io/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>✌ECC算法调研</title>
-    <link href="https://swaggymiller.github.io/blog/2018/11/10/ECC%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94/"/>
-    <id>https://swaggymiller.github.io/blog/2018/11/10/ECC算法调研/</id>
+    <link href="https://swaggymiller.github.io/2018/11/10/ECC%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94/"/>
+    <id>https://swaggymiller.github.io/2018/11/10/ECC算法调研/</id>
     <published>2018-11-10T01:52:23.819Z</published>
     <updated>2018-12-21T03:06:00.322Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>😂多蓝牙连接说明文档</title>
-    <link href="https://swaggymiller.github.io/blog/2018/08/11/%E5%A4%9A%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3%EF%BC%9A/"/>
-    <id>https://swaggymiller.github.io/blog/2018/08/11/多蓝牙连接说明文档：/</id>
+    <link href="https://swaggymiller.github.io/2018/08/11/%E5%A4%9A%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3%EF%BC%9A/"/>
+    <id>https://swaggymiller.github.io/2018/08/11/多蓝牙连接说明文档：/</id>
     <published>2018-08-11T11:55:03.469Z</published>
     <updated>2018-12-21T03:06:54.790Z</updated>
     
@@ -63,8 +63,8 @@
   
   <entry>
     <title>📗数据结构</title>
-    <link href="https://swaggymiller.github.io/blog/2018/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>https://swaggymiller.github.io/blog/2018/05/20/数据结构/</id>
+    <link href="https://swaggymiller.github.io/2018/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>https://swaggymiller.github.io/2018/05/20/数据结构/</id>
     <published>2018-05-20T07:41:01.082Z</published>
     <updated>2018-04-07T14:42:08.000Z</updated>
     
@@ -84,8 +84,8 @@
   
   <entry>
     <title>📙学习Markdown的语法</title>
-    <link href="https://swaggymiller.github.io/blog/2018/05/20/%E5%AD%A6%E4%B9%A0Markdown%E8%AF%AD%E6%B3%95/"/>
-    <id>https://swaggymiller.github.io/blog/2018/05/20/学习Markdown语法/</id>
+    <link href="https://swaggymiller.github.io/2018/05/20/%E5%AD%A6%E4%B9%A0Markdown%E8%AF%AD%E6%B3%95/"/>
+    <id>https://swaggymiller.github.io/2018/05/20/学习Markdown语法/</id>
     <published>2018-05-20T07:41:01.067Z</published>
     <updated>2018-06-02T08:55:57.296Z</updated>
     
@@ -110,8 +110,8 @@
   
   <entry>
     <title>📟Json/Http相关记录</title>
-    <link href="https://swaggymiller.github.io/blog/2018/05/20/json%20%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://swaggymiller.github.io/blog/2018/05/20/json 学习/</id>
+    <link href="https://swaggymiller.github.io/2018/05/20/json%20%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://swaggymiller.github.io/2018/05/20/json 学习/</id>
     <published>2018-05-20T07:41:01.035Z</published>
     <updated>2018-05-04T02:50:34.000Z</updated>
     
@@ -134,8 +134,8 @@
   
   <entry>
     <title>📒计组HomeWork</title>
-    <link href="https://swaggymiller.github.io/blog/2018/05/20/homework/"/>
-    <id>https://swaggymiller.github.io/blog/2018/05/20/homework/</id>
+    <link href="https://swaggymiller.github.io/2018/05/20/homework/"/>
+    <id>https://swaggymiller.github.io/2018/05/20/homework/</id>
     <published>2018-05-20T07:41:01.007Z</published>
     <updated>2018-03-19T16:13:10.000Z</updated>
     
@@ -156,8 +156,8 @@
   
   <entry>
     <title>✌Hello World</title>
-    <link href="https://swaggymiller.github.io/blog/2018/05/20/hello-world/"/>
-    <id>https://swaggymiller.github.io/blog/2018/05/20/hello-world/</id>
+    <link href="https://swaggymiller.github.io/2018/05/20/hello-world/"/>
+    <id>https://swaggymiller.github.io/2018/05/20/hello-world/</id>
     <published>2018-05-20T07:41:00.992Z</published>
     <updated>2018-03-13T11:54:14.000Z</updated>
     
@@ -177,8 +177,8 @@
   
   <entry>
     <title>💧关于LB</title>
-    <link href="https://swaggymiller.github.io/blog/2018/03/09/lb/"/>
-    <id>https://swaggymiller.github.io/blog/2018/03/09/lb/</id>
+    <link href="https://swaggymiller.github.io/2018/03/09/lb/"/>
+    <id>https://swaggymiller.github.io/2018/03/09/lb/</id>
     <published>2018-03-09T03:10:03.000Z</published>
     <updated>2018-06-20T07:34:29.085Z</updated>
     
