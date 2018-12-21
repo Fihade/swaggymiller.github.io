@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>MillerLiang</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Jquery -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Roboto+Condensed:700">
+  <!-- prettify -->
+  <link rel="stylesheet" href="/prettify/atelier-sulphurpool-light.min.css">
+  <script src="/prettify/prettify.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js"></script>
+</head>
+  <body>
+    <div class="container">
+      <header>
+  <div class="header">
+    <div class="blog-title">
+      <a href="/" class="logo">MillerLiang</a>
+    </div>
+    <nav class="navbar hidden-xs-only">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/" class="menu-item-link">首页</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link">归档</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="header-nav hidden-sm-and-up">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">首页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+  
+</header>
+      <main class="main">
+        <article class="post">
+  <div class="post-title">
+    <h2 class="title">😂多蓝牙连接说明文档</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2018-08-11</span>
+    <span class="post-author"></span>
+  </div>
+  <div class="post-content">
+    <p>一、参数前提：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter mBluetoothAdapter</span><br><span class="line">BluetoothManager bluetoothManager</span><br><span class="line">BleLink bleLink</span><br><span class="line">ArrayMap&lt;String, BleLink&gt; bleLinks = new ArrayMap&lt;&gt;()</span><br><span class="line">ArrayList&lt;ArrayMap&lt;String, String&gt;&gt; listData = new ArrayList&lt;&gt;()</span><br><span class="line">ArrayMap&lt;String, ArrayMap&gt; address = new ArrayMap&lt;&gt;()</span><br><span class="line">LinkBlueTooth mlinkbluetooth</span><br></pre></td></tr></table></figure>
+<p>二、相关接口：</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public boolean StartScan(String name, int timeout)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>String name  扫描蓝牙名</p>
+<p>int timeout   可以设置延迟（这里没有引用）</p>
+<p>通过循环获取蓝牙名为（”addr “）的蓝牙，加入至bleLink队列</p>
+<p>返回值是否扫描成功</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public boolean LinkDevice(String addr)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>连接设备并返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String addr = listData.get(position).get(&quot;addr&quot;);</span><br><span class="line"> if (bleLinks.containsKey(addr)) &#123;</span><br><span class="line">     int idNum = bleLinks.get(addr).id;</span><br><span class="line">     bleLinks.get(addr).dislink();</span><br><span class="line">     bleLinks.remove(addr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配数据表中的(“addr”)的相关设备，当多于2个时删除之前队列</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void DislinkDevice(String addr)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>断连设备</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int GetDeviceState()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>获取设备状态（连接/未连接/无法连接）</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public boolean SendData(byte[] data)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>发送数据最多128bit的数据</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public byte[] ReceiveData()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>获取数据，同上</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void OnDeviceStateChanged(BleLink bleLink, BleDeviceState state)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查看设备所处状态的变化</p>
+
+  </div>
+</article>
+      </main>
+    </div>
+  </body>
+</html>

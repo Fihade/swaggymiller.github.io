@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>MillerLiang</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Jquery -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Roboto+Condensed:700">
+  <!-- prettify -->
+  <link rel="stylesheet" href="/prettify/atelier-sulphurpool-light.min.css">
+  <script src="/prettify/prettify.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js"></script>
+</head>
+  <body>
+    <div class="container">
+      <header>
+  <div class="header">
+    <div class="blog-title">
+      <a href="/" class="logo">MillerLiang</a>
+    </div>
+    <nav class="navbar hidden-xs-only">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/" class="menu-item-link">首页</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link">归档</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="header-nav hidden-sm-and-up">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">首页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+  
+</header>
+      <main class="main">
+        <article class="post">
+  <div class="post-title">
+    <h2 class="title">📟Json/Http相关记录</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2018-05-20</span>
+    <span class="post-author">梁斌</span>
+  </div>
+  <div class="post-content">
+    <blockquote>
+<p>⌛一直会不定期更一下…<br>上一个开始学习android端的json方面的相关知识，学了近两个周，因为每天要上课，所以会断断续续，接下来我想记录一下最近的学习成果以及 check in 一下。</p>
+</blockquote>
+<h3 id="关于Json"><a href="#关于Json" class="headerlink" title="关于Json"></a>关于Json</h3><blockquote>
+<p>Json 是一种轻量级的数据交换格式,对于我而言它更像是一种用来存储数据的某种结构，在 Android 中能够通过给定的相关类，调用相关方法，可以达到获取数据，响应数据的效果。</p>
+</blockquote>
+<h2 id="Json相关信息"><a href="#Json相关信息" class="headerlink" title="Json相关信息"></a>Json相关信息</h2><blockquote>
+<p>针对于Json来说万事万物都是对象，每个对象都会以键值对的形式来表达（不过对与 key 加双引号有点不太适应🙃），所以Json涉及一些语法</p>
+<ul>
+<li>对象表示为键值对</li>
+<li>数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+</blockquote>
+<h2 id="了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构"><a href="#了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构" class="headerlink" title="了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构"></a>了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构</h2><h2 id="在Android开发中使用"><a href="#在Android开发中使用" class="headerlink" title="在Android开发中使用"></a>在Android开发中使用</h2><p>关于Http请求(<b>makeHttpRequest(URL url)</b>)：</p>
+<blockquote>
+<p>刚开始我们需要一些相关变量，所以我在这里先定义了☺</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String jsonResponse = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">if</span> (url == <span class="keyword">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> jsonResponse;</span><br><span class="line">&#125;</span><br><span class="line">HttpURLConnection urlConnection = <span class="keyword">null</span>;</span><br><span class="line">InputStream inputStream = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>需要构造url,将String类型的url地址转换成URL类型（catch….throws方法…）</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//辅助新方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> URL <span class="title">creatUrl</span><span class="params">(String stringUrl)</span></span>&#123;</span><br><span class="line">    URL url = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">       url = <span class="keyword">new</span> URL(stringUrl);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">        Log.i(<span class="string">"tag"</span>,<span class="string">"Problem about the URL"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>构造HttpRequest请求，将上一步的URL传参，构造实例化HttpURLConnection urlConnection</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HttpURLConnection urlConnection = <span class="keyword">null</span>;</span><br><span class="line">InputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">      urlConnection = (HttpURLConnection) url.openConnection(); <span class="comment">//打开连接</span></span><br><span class="line">      urlConnection.setReadTimeout(<span class="number">10000</span>);                      <span class="comment">//读取时间延迟</span></span><br><span class="line">      urlConnection.setConnectTimeout(<span class="number">15000</span>);                   <span class="comment">//连接时间延迟</span></span><br><span class="line">      urlConnection.setRequestMethod(<span class="string">"GET"</span>);                    <span class="comment">//请求方法“GET”</span></span><br><span class="line">      urlConnection.connect();                                  <span class="comment">//连接</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>\3. 判断获取连接之后返回的值getResponseCode判断是否连接成功，在http链接中一般返回200为连接成功，然后就需要通过上一步中的urlconnection进行先获取</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求成功响应200</span></span><br><span class="line"><span class="comment">//然后读取输入流数据</span></span><br><span class="line"><span class="keyword">if</span>(urlConnection.getResponseCode() == <span class="number">200</span>)&#123;</span><br><span class="line">      ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.当我们连接成功以后，这时候我们就可以从URl里面获取一些数据，这个时候需要用到之前的变量inputstream,inputstream作为一个抽象类，相当于“引源 ”的作用，标志多种类型的数据，然后调用.getinputstream方法，标记所有从url的信息，然后调用方法开始 “ 读取数据 ”了（inputstream 相当于压缩过的数据，依然需要我们再次解析</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//然后读取输入流数据</span></span><br><span class="line"><span class="keyword">if</span>(urlConnection.getResponseCode() == <span class="number">200</span>)&#123;</span><br><span class="line">      inputStream = urlConnection.getInputStream();</span><br><span class="line">      jsonResponse = readFromStream(inputStream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.这时inputstream之后，需要读取输入流数据，转换成jsong数据格式类型，需要用到静态抽象类BufferedReader来从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取（这句话摘抄的☺</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取输入流数据</span></span><br><span class="line"><span class="comment">//转换为包含json数据的格式</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">readFromStream</span><span class="params">(InputStream inputStream)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">       StringBuilder output = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">       <span class="keyword">if</span>(inputStream != <span class="keyword">null</span>)&#123;</span><br><span class="line">           InputStreamReader inputStreamReader = <span class="keyword">new</span> InputStreamReader(inputStream , Charset.forName(<span class="string">"UTF-8"</span>));</span><br><span class="line">           BufferedReader reader = <span class="keyword">new</span> BufferedReader(inputStreamReader);</span><br><span class="line">           String line = reader.readLine();</span><br><span class="line">           <span class="keyword">while</span>(line != <span class="keyword">null</span>)&#123;</span><br><span class="line">               <span class="comment">//apend()连接数据</span></span><br><span class="line">               line = reader.readLine();</span><br><span class="line">               output.append(line);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> output.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>对于json来说，首先需要了解整个json的文件格式，例如</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span>: <span class="string">"FeatureCollection"</span>,</span><br><span class="line">  <span class="attr">"metadata"</span>: &#123;</span><br><span class="line">    <span class="attr">"generated"</span>: <span class="number">1523110898000</span>,</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"https://earthquake.usgs.gov/fdsnws/event/1/query?starttime=2018-03-10&amp;endtime=2018-03-12&amp;format=geojson"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"USGS Earthquakes"</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">"api"</span>: <span class="string">"1.5.8"</span>,</span><br><span class="line">    <span class="attr">"count"</span>: <span class="number">737</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"features"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="attr">"properties"</span>: &#123;</span><br><span class="line">        <span class="attr">"mag"</span>: <span class="number">0.4</span>,</span><br><span class="line">        <span class="attr">"place"</span>: <span class="string">"10km NNW of Incline Village, Nevada"</span>,</span><br><span class="line">        <span class="attr">"time"</span>: <span class="number">1520812711481</span>,</span><br><span class="line">        <span class="attr">"updated"</span>: <span class="number">1520820364368</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.对于第5步获取的json格式的数据，通过创建json响应字符获取数组，其次获取对应的元素信息，在下面的代码可以看到首先用了JSONArray数组来存储整个Json数据的所有键值对，用JSONObject对象调用getJSONObject获取Json数据的对应值</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List&lt;Earthquake&gt; <span class="title">extractFeatureFromJson</span><span class="params">(String  earthquakeJSON)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//如果json为null提前返回</span></span><br><span class="line">       <span class="keyword">if</span>(TextUtils.isEmpty(earthquakeJSON))&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       List&lt;Earthquake&gt; earthquakes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span>&#123;</span><br><span class="line">           <span class="comment">//通过json响应字符创建jsonobject</span></span><br><span class="line">           JSONObject baseJsonResponse = <span class="keyword">new</span> JSONObject(earthquakeJSON);</span><br><span class="line">           <span class="comment">//提取关键字“feature”的键值，构成Array数组</span></span><br><span class="line">           JSONArray earthquakeArray = baseJsonResponse.getJSONArray(<span class="string">"features"</span>);</span><br><span class="line">           <span class="comment">//遍历循环Array中的每一个元素，获取信息</span></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt;earthquakeArray.length();i++)&#123;</span><br><span class="line">               <span class="comment">//实例化一个jsonobject的对象</span></span><br><span class="line">               JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);</span><br><span class="line">               <span class="comment">//创建对象获取properties下的值，下面得到值均在“properties”下面</span></span><br><span class="line">               JSONObject properties = currentEarthquake.getJSONObject(<span class="string">"properties"</span>);</span><br><span class="line">               <span class="comment">//获取magnitude的值</span></span><br><span class="line">               <span class="keyword">double</span> magnitude = properties.getDouble(<span class="string">"mag"</span>);</span><br><span class="line">               <span class="comment">//获取location的值</span></span><br><span class="line">               String location = properties.getString(<span class="string">"place"</span>);</span><br><span class="line">               <span class="comment">//获取time的值</span></span><br><span class="line">               <span class="keyword">long</span> time = properties.getLong(<span class="string">"time"</span>);</span><br><span class="line">               <span class="comment">//获取url的值</span></span><br><span class="line">               String url = properties.getString(<span class="string">"url"</span>);</span><br><span class="line">               <span class="comment">//创建新的Earthquake对象</span></span><br><span class="line">               Earthquake earthquake = <span class="keyword">new</span> Earthquake(magnitude,location,time,url);</span><br><span class="line"></span><br><span class="line">               <span class="comment">//将新的earthquake对象添加到列表中</span></span><br><span class="line">               earthquakes.add(earthquake);</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125; <span class="keyword">catch</span> (JSONException e) &#123;</span><br><span class="line"></span><br><span class="line">           Log.e(<span class="string">"QueryUtils"</span>, <span class="string">"Problem parsing the earthquake JSON results"</span>, e);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// Return the list of earthquakes</span></span><br><span class="line">       <span class="keyword">return</span> earthquakes;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.最后的最后将上面的四个函数需要我们整合在一起，建立一个名为fetchData（String requesturl）函数，将这些函数的返回值一一对应，return回一个自己所需要的储存数据的数据类型，在这里我返回了一个List&lt;&gt;类型的数据列表，并且髓外开放为public类型的函数</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法将所有步骤连接在一起，唯一的public函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  List&lt;Earthquake&gt; <span class="title">fetchEarthquakeData</span><span class="params">(String requestUrl)</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建url对象</span></span><br><span class="line">    URL url = creatUrl(requestUrl);</span><br><span class="line">    <span class="comment">//执行url的http请求并返回json响应</span></span><br><span class="line">    String jsonResponse = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        jsonResponse = makeHttpRequest(url);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        Log.e(LOG_TAG,<span class="string">"Problem about makehttpRequest"</span>,e);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从json响应数据提取相关信息并创建列表</span></span><br><span class="line">    List&lt;Earthquake&gt; earthquakes = extractFeatureFromJson(jsonResponse);</span><br><span class="line">    <span class="comment">//return 列表</span></span><br><span class="line">    <span class="keyword">return</span> earthquakes;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="以后有新的体会再来更新👺"><a href="#以后有新的体会再来更新👺" class="headerlink" title="以后有新的体会再来更新👺"></a>以后有新的体会再来更新👺</h2><h3 id="Stop-stoping"><a href="#Stop-stoping" class="headerlink" title="Stop stoping"></a>Stop stoping</h3><h3 id="开始看Gson和FastJson"><a href="#开始看Gson和FastJson" class="headerlink" title="开始看Gson和FastJson"></a>开始看Gson和FastJson</h3><h3 id="接上一条，看完了-ง-•-•-ง"><a href="#接上一条，看完了-ง-•-•-ง" class="headerlink" title="接上一条，看完了/(ง •_•)ง/"></a>接上一条，看完了/(ง •_•)ง/</h3>
+  </div>
+</article>
+      </main>
+    </div>
+  </body>
+</html>

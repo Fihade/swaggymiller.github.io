@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>MillerLiang</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Jquery -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Roboto+Condensed:700">
+  <!-- prettify -->
+  <link rel="stylesheet" href="/prettify/atelier-sulphurpool-light.min.css">
+  <script src="/prettify/prettify.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js"></script>
+</head>
+  <body>
+    <div class="container">
+      <header>
+  <div class="header">
+    <div class="blog-title">
+      <a href="/" class="logo">MillerLiang</a>
+    </div>
+    <nav class="navbar hidden-xs-only">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/" class="menu-item-link">首页</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link">归档</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="header-nav hidden-sm-and-up">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">首页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+  
+</header>
+      <main class="main">
+        <article class="post">
+  <div class="post-title">
+    <h2 class="title">📒计组HomeWork</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2018-05-20</span>
+    <span class="post-author">梁斌</span>
+  </div>
+  <div class="post-content">
+    <h2 id="关于思路"><a href="#关于思路" class="headerlink" title="关于思路:"></a>关于思路:</h2><blockquote>
+<p>针对于亲缘关系中如何找出与自己关系最近的10个人，当我们需要自己给出一个数据集，需要设置一些特征值，然后根据不同的特征值赋上不同的权重值，通过计算最后的Total,每个人不同的得分，最后进行排序,取得前10个人的成绩，定义为与自己关系最近的10个人。</p>
+</blockquote>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li><b>确定个人的特征值</b>，其中包括levelRelation(关系层级)、isCouple(是否为情侣)、isParent(是否为父母)、isGrandParent(是否为祖父母)、isUncleOrAunt(是否为叔叔/阿姨)、isBrotherOrSister(是否为哥哥/姐姐)、phoneTime(电话时长)。</li>
+</ul>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//提前給定一些人特征</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; data = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span><br><span class="line">Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(<span class="string">"levelRelation"</span>, <span class="number">2</span>);</span><br><span class="line">map.put(<span class="string">"isCouple"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isBrotherOrSister"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isParent"</span>, <span class="keyword">true</span>);</span><br><span class="line">map.put(<span class="string">"isGrandParent"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isUncleOrAunt"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"phoneTime"</span>, Math.random() * <span class="number">10</span>);</span><br><span class="line">data.add(map);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><b>获取总时长</b>,分配每个人在通话时间上的权重值</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&lt;String, Object&gt;&gt; database = ALL.get(i);</span><br><span class="line">Map&lt;String,Object&gt; dataMap = database.get(i);</span><br><span class="line">Object  time = dataMap.get(<span class="string">"phoneTime"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><b>获取每个人的总得分</b>,前提引入在isCouple,isParent,isGrandParent,isBrotherOrSister,isUncleOrAunt中分别分配了8，8，7，6，4，再加上之前的phoneTime的分数，此刻求出每个人的Total总得分。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      <span class="comment">//遍历所有人</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; database = ALL.get(i);</span><br><span class="line">Map&lt;String,Object&gt; dataMap = database.get(i);</span><br><span class="line"><span class="comment">//获取所有人的信息值</span></span><br><span class="line">Object levelRelation = dataMap.get(<span class="string">"levelRelation"</span>);</span><br><span class="line">Object isCouple = dataMap.get(<span class="string">"isCouple"</span>);</span><br><span class="line">Object isBrotherOrSister = dataMap.get(<span class="string">"isBrotherOrSister"</span>);</span><br><span class="line">Object isParent = dataMap.get(<span class="string">"isParent"</span>);</span><br><span class="line">Object isGrandParent = dataMap.get(<span class="string">"isGrandParent"</span>);</span><br><span class="line">Object isUncleOrAunt = dataMap.get(<span class="string">"isUncleOrAunt"</span>);</span><br><span class="line">Object time = dataMap.get(<span class="string">"phoneTime"</span>);</span><br><span class="line">      <span class="comment">//总得分</span></span><br><span class="line">      <span class="comment">//Total</span></span><br><span class="line"><span class="keyword">int</span> b = Integer.parseInt(String.valueOf(time));</span><br><span class="line">total = total + b;</span><br><span class="line"><span class="comment">//获取所有人的总时间数据</span></span><br><span class="line">allPeopleTotal.add(total);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><b>排序算法</b>,对所有得分进行排序然后输出前10，即在定义上找出与自己最近的10个人。</li>
+</ul>
+
+  </div>
+</article>
+      </main>
+    </div>
+  </body>
+</html>
