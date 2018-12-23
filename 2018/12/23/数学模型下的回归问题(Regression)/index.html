@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>MillerLiang</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Jquery -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Roboto+Condensed:700">
+  <!-- prettify -->
+  <link rel="stylesheet" href="/prettify/atelier-sulphurpool-light.min.css">
+  <script src="/prettify/prettify.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js"></script>
+</head>
+  <body>
+    <div class="container">
+    
+      <header>
+  <div class="header">
+    <div class="blog-title">
+      <a href="/" class="logo">MillerLiang</a>
+    </div>
+    <nav class="navbar hidden-xs-only">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/" class="menu-item-link">首页</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link">归档</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="header-nav hidden-sm-and-up">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">首页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+  
+</header>
+      <main class="main">
+        <article class="post">
+  <div class="post-title">
+    <h2 class="title">📡数学模型下的回归问题(Regression)</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2018-12-23</span>
+    <span class="post-author"></span>
+  </div>
+  <div class="post-content">
+    <h4 id="1-数学模型中的基本建立"><a href="#1-数学模型中的基本建立" class="headerlink" title="1. 数学模型中的基本建立"></a>1. 数学模型中的基本建立</h4><ul>
+<li><h5 id="单一变量"><a href="#单一变量" class="headerlink" title="单一变量**"></a>单一变量**</h5></li>
+</ul>
+<p>$$<br>h_\theta(x) = \theta_0+\theta_1*x<br>$$</p>
+<p>即：<br>$$<br>y^ i  = \theta_0 + \theta_1*x^i<br>$$</p>
+<ul>
+<li><strong>Cost Function</strong></li>
+</ul>
+<p>此时训练的线性函数的求解与原数据做差，然后取个平方：<br>$$<br>J_i(\theta) = (y_1^i - y^i)^2<br>$$<br>将这些平方差求和，并取平均数，再除以2（因为平方项在求导的时候可以与这个分母2抵消）：<br>$$<br>J_\theta = 1/2m \sum_{i=1}^{m}(y_1^i - y^i)^2<br>$$</p>
+<ul>
+<li><strong>最优解</strong></li>
+</ul>
+<p>此时求解关于theta0和 theta 1的方程，此时当求解处J的最小值，即在绘制曲线的时候在曲线的最低点即为J的最小值，此时取theta集：<br>$$<br>min(J_\theta) = min( 1/2m \sum_{i=1}^{m} (y_1^i - y^i)^2)<br>$$</p>
+<ul>
+<li><strong>Gradient Descent</strong></li>
+</ul>
+<p>通过梯度下降的方法进行求解最优解，则一开始选择一个解，然后沿着一定的方向的逐渐靠近（下降）这个值：<br>$$<br>temp0 = \theta_0 - \alpha <em> \frac{\part}{d\theta_0}J(\theta_0,\theta_1) \<br>temp1 = \theta_0 - \alpha </em> \frac{\part}{d\theta_1}J(\theta_0,\theta_1) \<br>\theta_0 = temp0 \<br>\theta_1 = temp1<br>$$<br>$\bigtriangleup$$此时求解$ $t  emp1中$$的 $$\theta_0$$为 $$temp0$$ ，需要时时更新这个值</p>
+<ul>
+<li>对于$$\alpha$$的选择，如果太小，则梯度下降的速率会很慢</li>
+<li>如果$$\alpha$$取值太大，梯度下降可能会跳过最优解</li>
+</ul>
+<p>最后将每次梯度下降的值应用到  $$J_\theta = 1/2m \sum_{i=1}^{m}(y_1^i - y^i)^2$$  中去：</p>
+<ul>
+<li><strong>梯度求导过程：</strong></li>
+</ul>
+<p>$$<br>\frac{\part}{d\theta_j}J(\theta_0,\theta_1) = \frac {\part}{\part \theta_j}\frac{1}{2m}\sum_{i=1}^{m}(\theta_0+\theta_1x_i - y_i)^2<br>$$</p>
+<p><strong>j = 0:</strong><br>$$<br>\frac{\part}{d\theta_j}J(\theta_0,\theta_1) = \frac {\part}{\part \theta_j}\frac{1}{m}\sum_{i=1}^{m}(\theta_0+\theta_1x_i - y_i)<br>$$<br><strong>j = 1:</strong><br>$$<br>\frac{\part}{d\theta_j}J(\theta_0,\theta_1) = \frac {\part}{\part \theta_j}\frac{1}{m}\sum_{i=1}^{m}(\theta_0+\theta_1x_i - y_i)*x_i<br>$$</p>
+<h4 id="2-在-pytorch-进行实践与验证"><a href="#2-在-pytorch-进行实践与验证" class="headerlink" title="2. 在 $$pytorch$$ 进行实践与验证"></a>2. 在 $$pytorch$$ 进行实践与验证</h4><ul>
+<li><p>首先，人为制造建立一个$$y = x^2$$ 的函数进行回归拟合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = torch.unsqueeze(torch.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">100</span>), dim=<span class="number">1</span>)	<span class="comment"># 将散点转化为二维变量</span></span><br><span class="line">y = x.pow(<span class="number">2</span>) + <span class="number">0.2</span> * torch.rand(x.size())				<span class="comment"># torch.rand(x.size())加噪点</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将  $$x$$ ,  $$y$$ 转化为  $$Variable$$  变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x, y = Variable(x), Variable(y)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立神经网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(torch.nn.Module)</span>:</span>  <span class="comment"># 继承 torch 的 Module</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_feature, n_hidden, n_output)</span>:</span></span><br><span class="line">        super(Net, self).__init__()     <span class="comment"># 继承 __init__ 功能</span></span><br><span class="line">        <span class="comment"># 定义每层用什么样的形式</span></span><br><span class="line">        self.hidden = torch.nn.Linear(n_feature, n_hidden)   <span class="comment"># 隐藏层线性输出</span></span><br><span class="line">        self.predict = torch.nn.Linear(n_hidden, n_output)   <span class="comment"># 输出层线性输出</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span>   <span class="comment"># 这同时也是 Module 中的 forward 功能</span></span><br><span class="line">        <span class="comment"># 正向传播输入值, 神经网络分析出输出值</span></span><br><span class="line">        x = F.relu(self.hidden(x))      <span class="comment"># 激励函数(隐藏层的线性值)</span></span><br><span class="line">        x = self.predict(x)             <span class="comment"># 输出值</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<p>在  $$init$$（）进行定义所有层的属性，再通过$$forward$$ ( )函数进行连接层与层的关系 ，建立关系的时候，会用到激励函数 $$F$$，此时打印 $$Net$$ 结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Net(</span><br><span class="line">  (hidden): Linear(in_features=1, out_features=10, bias=True)</span><br><span class="line">  (predict): Linear(in_features=10, out_features=1, bias=True)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>训练网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optimizer 是训练的工具</span></span><br><span class="line">optimizer = torch.optim.SGD(net.parameters(), lr=<span class="number">0.2</span>)  <span class="comment"># 传入net的所有参数, 学习率(&lt;1)</span></span><br><span class="line">loss_func = torch.nn.MSELoss()      <span class="comment"># 预测值和真实值的误差计算公式 (均方差)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    prediction = net(x)     <span class="comment"># 喂给 net 训练数据 x, 输出预测值</span></span><br><span class="line"></span><br><span class="line">    loss = loss_func(prediction, y)     <span class="comment"># 计算两者的误差</span></span><br><span class="line"></span><br><span class="line">    optimizer.zero_grad()   <span class="comment"># 清空上一步的残余更新参数值</span></span><br><span class="line">    loss.backward()         <span class="comment"># 误差反向传播, 计算参数更新值</span></span><br><span class="line">    optimizer.step()        <span class="comment"># 将参数更新值施加到 net 的 parameters 上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 loss</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> tensor(0.0064, grad_fn=&lt;MseLossBackward&gt;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+  </div>
+</article>
+      </main>
+    </div>
+  </body>
+</html>
