@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <title>MillerLiang</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Jquery -->
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Roboto+Condensed:700">
+  <!-- prettify -->
+  <link rel="stylesheet" href="/prettify/atelier-sulphurpool-light.min.css">
+  <script src="/prettify/prettify.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js"></script>
+</head>
+  <body>
+    <div class="container">
+    
+      <header>
+  <div class="header">
+    <div class="blog-title">
+      <a href="/" class="logo">MillerLiang</a>
+    </div>
+    <nav class="navbar hidden-xs-only">
+      <ul class="menu">
+        
+          <li class="menu-item">
+            <a href="/" class="menu-item-link">首页</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="/archives" class="menu-item-link">归档</a>
+          </li>
+        
+          <li class="menu-item">
+            <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="header-nav hidden-sm-and-up">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">首页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="https://github.com/swaggymiller" class="menu-item-link">Github</a>
+        </li>
+      
+    </ul>
+  </nav>
+  
+</header>
+      <main class="main">
+        <article class="post">
+  <div class="post-title">
+    <h2 class="title">🎈Flutter响应式编程—— BLoC模式</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2019-04-21</span>
+    <span class="post-author">梁斌</span>
+  </div>
+  <div class="post-content">
+    <p>BLoC模式是在2018DartConf期间第一次展示，你可以在有条件的情况下访问<br>
+[这里]: <a href="https://www.youtube.com/watch?v=PLHln7wHgPE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=PLHln7wHgPE</a><br>
+进行观看</p>
+<p>BLo的含义是“Bussiness Logic Component”,翻译过来就是业务逻辑组件，通过实践证明它具有以下几个特性：</p>
+<ul>
+<li>你可能需要一个或多个BLoC</li>
+<li>UI的组件只关心事务层并不关心业务层</li>
+<li>我们需要一个能连接BLoc的Stream，通过它的输入(Sink)和输出(Streams)，进行通信</li>
+<li>各部分相对独立，模块化的感觉真的很有意思（低耦合）</li>
+</ul>
+<p>所以我们需要前期先要了解一些概念：</p>
+<ol>
+<li>什么是响应式编程？</li>
+</ol>
+<p>响应式编程是使用异步数据流的编程，即当你触发一次事件，你的所有的数据、状态都是通过数据流进行改变的，会存在监听事件对触发事件进行监听并产生相对应的反馈。在Flutte中，想要实现响应式编程我们需要Stream和listeners进行开发，触发事件需要向Stream进行发送通知，然后传到BLoC，进行事件处理。<br>
+2. 什么是Stream?</p>
+<p>Stream你可以看成一个数据管道，当你输入数据提交之后，就会从另一端输出数据</p>
+<p>假设我们使用传统的方式进行交互，我们需要在每次触发事件进行一次SetState(() {}),随着你可能功能的不断增加，setState的次数不断增加，网络请求和UI写在一起，后来程序将变得特别复杂，例如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">Null</span>&gt; _handleRefresh() <span class="keyword">async</span>&#123;</span><br><span class="line">  <span class="keyword">await</span> Future.delayed(<span class="built_in">Duration</span>(seconds: <span class="number">1</span>));</span><br><span class="line">  setState(() &#123;&#125;);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当采用BLoC模式的时候</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> MovieProvider(</span><br><span class="line">      movieBloc: MovieBloc(API()),</span><br><span class="line">      child: MaterialApp(</span><br><span class="line">        title: <span class="string">'Flutter Demo'</span>,</span><br><span class="line">        theme: ThemeData(),</span><br><span class="line">        home: MyHomePage(),</span><br><span class="line">      ),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>通过StreamBuilder构建组件</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Flexible(</span><br><span class="line"> child: StreamBuilder(</span><br><span class="line">   stream: movieBloc.results,</span><br><span class="line">       builder: (context, snapshot) &#123;</span><br><span class="line">         <span class="keyword">if</span> (!snapshot.hasData)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>在BLoC中定义数据</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;<span class="built_in">List</span>&lt;Movie&gt;&gt; _results = Stream.empty();</span><br><span class="line">Stream&lt;<span class="built_in">String</span>&gt; _log = Stream.empty();</span><br><span class="line"></span><br><span class="line">ReplaySubject&lt;<span class="built_in">String</span>&gt; _query = ReplaySubject&lt;<span class="built_in">String</span>&gt;();</span><br><span class="line"></span><br><span class="line">Stream&lt;<span class="built_in">String</span>&gt; <span class="keyword">get</span> log =&gt; _log;</span><br><span class="line">Stream&lt;<span class="built_in">List</span>&lt;Movie&gt;&gt; <span class="keyword">get</span> results =&gt; _results;</span><br><span class="line">Sink&lt;<span class="built_in">String</span>&gt; <span class="keyword">get</span> query =&gt; _query;</span><br></pre></td></tr></table></figure>
+<p>通过BLoC自身进行数据处理</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MovieBloc(<span class="keyword">this</span>.api) &#123;</span><br><span class="line">  _results = _query.distinct().asyncMap(api.<span class="keyword">get</span>).asBroadcastStream();</span><br><span class="line"></span><br><span class="line">  _log = Observable(results)</span><br><span class="line">      .withLatestFrom(_query.stream, (_, query) =&gt; <span class="string">'Results for $query'</span>)</span><br><span class="line">      .asBroadcastStream();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后我们需要一个Provider进行数据的封装</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MovieProvider</span> <span class="keyword">extends</span> <span class="title">InheritedWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">final</span> MovieBloc movieBloc;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">bool</span> updateShouldNotify(InheritedWidget oldWidget) =&gt; <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> MovieBloc of(BuildContext context) =&gt;</span><br><span class="line">      (context.inheritFromWidgetOfExactType(MovieProvider) <span class="keyword">as</span> MovieProvider)</span><br><span class="line">          .movieBloc;</span><br><span class="line"></span><br><span class="line">  MovieProvider(&#123;Key key, MovieBloc movieBloc, Widget child&#125;)</span><br><span class="line">      : <span class="keyword">this</span>.movieBloc = movieBloc ?? MovieBloc(API()),</span><br><span class="line">        <span class="keyword">super</span>(child: child, key: key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ol>
+<li>严重遵守了单一职责原则，代码解耦更好</li>
+<li>不一定任何时候都要用BLoC模式，不要为了模式而模式</li>
+<li>用了BLoC之后更容易测试，模块化每次测试比混起来写舒服多了</li>
+<li>使用场景可能当你不同的UI组件需要同一份数据的时候，显然BLoC在其中的作用就会十分明显</li>
+</ol>
+
+  </div>
+</article>
+      </main>
+    </div>
+  </body>
+</html>
