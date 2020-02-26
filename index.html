@@ -28,11 +28,11 @@
       <ul class="menu">
         
           <li class="menu-item">
-            <a href="/" class="menu-item-link">首页</a>
+            <a href="/" class="menu-item-link">Home</a>
           </li>
         
           <li class="menu-item">
-            <a href="/archives" class="menu-item-link">归档</a>
+            <a href="/archives" class="menu-item-link">Archives</a>
           </li>
         
           <li class="menu-item">
@@ -47,11 +47,11 @@
     <ul class="menu">
       
         <li class="menu-item">
-          <a href="/" class="menu-item-link">首页</a>
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
         <li class="menu-item">
-          <a href="/archives" class="menu-item-link">归档</a>
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
       
         <li class="menu-item">
@@ -89,11 +89,14 @@ BLo的含义是“Bussiness Logic Component”,翻译过来就是业务逻辑组
  单一变量**
 
 
-hθ(x)=θ0+θ1∗xh_\theta(x) = \theta_0+\theta_1*x
-h​θ​​(x)=θ​0​​+θ​1​​∗x
+$ h_\theta(x) = \theta_0+\theta_1*x$
 即：
-yi=θ0+θ1∗xiy^ i  = \theta_0 + \theta_1*x^i
-y​i​​=θ​0​​+θ​...
+$ y^ i  = \theta_0 + \theta_1*x^i $
+
+Cost Function
+
+此时训练的线性函数的求解与原数据做差，然后取个平方：
+Ji(θ)=(y1i−...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-12-23</span>
@@ -106,12 +109,13 @@ y​i​​=θ​0​​+θ​...
       </div>
       <div class="post-content">
         Ecc算法这里我采用了Matlab来进行加密算法的验证：
-代码结构：madfrac.m 代码：
+ 代码结构：
+madfrac.m 代码：
 在这里我实现的是分数的模运算函数
 12
 Add.m
 在这里定义了在椭圆里面两个点的加法运算
-12345678910111213141516171819function [ resx,resy ] = Add( a,b,...
+12345678910111213141516171819function [ resx,resy ] = Add( a,...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-11-10</span>
@@ -136,8 +140,10 @@ Add.m
         📗数据结构
       </div>
       <div class="post-content">
-        写在前面123456#include &lt;malloc.h&gt;#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#define maxsize 10
-Q1:寻找集合A和B相交部分以及A-B的部分1234567...
+         写在前面
+123456#include &lt;malloc.h&gt;#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#define maxsize 10
+ Q1:寻找集合A和B相交部分以及A-B的部分
+123...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-05-20</span>
@@ -150,19 +156,32 @@ Q1:寻找集合A和B相交部分以及A-B的部分1234567...
       </div>
       <div class="post-content">
         
-开头请不要加注释，后有点迷……
+开头请不要加注释，后有点迷…
 
-##1.关于标题的用法   两种形式1）使用=和-标记一级和二级标题。
+##1.关于标题的用法
+两种形式
+1）使用=和-标记一级和二级标题。
 
-一级标题=========二级标题---------
+一级标题
+=========
+二级标题
+---------
 
 效果：
 
-一级标题   二级标题2）使用#，可表示1-6级标题。# 一级标题## 二级标题### 三级标题   
+ 一级标题
+ 二级标题
+
+2）使用#，可表示1-6级标题。
+
+# 一级标题
+## 二级标题
+### 三级标题
 
 效果：
 
-一级标题二级标题三级标...
+ 一级标题
+ ...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-05-20</span>
@@ -175,10 +194,12 @@ Q1:寻找集合A和B相交部分以及A-B的部分1234567...
       </div>
       <div class="post-content">
         
-⌛一直会不定期更一下…上一个开始学习android端的json方面的相关知识，学了近两个周，因为每天要上课，所以会断断续续，接下来我想记录一下最近的学习成果以及 check in 一下。
+⌛一直会不定期更一下…
+上一个开始学习android端的json方面的相关知识，学了近两个周，因为每天要上课，所以会断断续续，接下来我想记录一下最近的学习成果以及 check in 一下。
 
-关于Json
-Json 是一种轻量级的数据交换格式,对于我而言它更像是一种用来存储数据的某种结构，在 Android 中能...
+ 关于Json
+
+Json 是一种轻量级的数据交换格式,对于我而言它更像是一种用来存储数据的某种结构，在 Android...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-05-20</span>
@@ -190,11 +211,13 @@ Json 是一种轻量级的数据交换格式,对于我而言它更像是一种�
         📒计组HomeWork
       </div>
       <div class="post-content">
-        关于思路:
+         关于思路:
+
 针对于亲缘关系中如何找出与自己关系最近的10个人，当我们需要自己给出一个数据集，需要设置一些特征值，然后根据不同的特征值赋上不同的权重值，通过计算最后的Total,每个人不同的得分，最后进行排序,取得前10个人的成绩，定义为与自己关系最近的10个人。
 
-步骤
-确定个人的特征值，其中包括levelRel...
+ 步骤
+
+确定个人的特征值，其中包括leve...
       </div>
       <div class="post-meta">
         <span class="post-time">2018-05-20</span>
@@ -218,11 +241,11 @@ Json 是一种轻量级的数据交换格式,对于我而言它更像是一种�
         💧关于LB
       </div>
       <div class="post-content">
-        “ 不知道说些什么 “
-“ 最近爱吃橙子了 “
-“ …………………. “
-“ 最近有点累🤡L “
-“ 开始学 opencv 了 “
+        &quot; 不知道说些什么 &quot;
+&quot; 最近爱吃橙子了 &quot;
+&quot; … &quot;
+&quot; 最近有点累🤡L &quot;
+&quot; 开始学 opencv 了 &quot;
 
       </div>
       <div class="post-meta">
@@ -234,5 +257,21 @@ Json 是一种轻量级的数据交换格式,对于我而言它更像是一种�
 
       </main>
     </div>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>

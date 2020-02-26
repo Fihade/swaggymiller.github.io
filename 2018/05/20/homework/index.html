@@ -28,11 +28,11 @@
       <ul class="menu">
         
           <li class="menu-item">
-            <a href="/" class="menu-item-link">首页</a>
+            <a href="/" class="menu-item-link">Home</a>
           </li>
         
           <li class="menu-item">
-            <a href="/archives" class="menu-item-link">归档</a>
+            <a href="/archives" class="menu-item-link">Archives</a>
           </li>
         
           <li class="menu-item">
@@ -47,11 +47,11 @@
     <ul class="menu">
       
         <li class="menu-item">
-          <a href="/" class="menu-item-link">首页</a>
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
         <li class="menu-item">
-          <a href="/archives" class="menu-item-link">归档</a>
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
       
         <li class="menu-item">
@@ -72,13 +72,16 @@
     <span class="post-author">梁斌</span>
   </div>
   <div class="post-content">
-    <h2 id="关于思路"><a href="#关于思路" class="headerlink" title="关于思路:"></a>关于思路:</h2><blockquote>
+    <h2 id="关于思路"><a class="markdownIt-Anchor" href="#关于思路"></a> 关于思路:</h2>
+<blockquote>
 <p>针对于亲缘关系中如何找出与自己关系最近的10个人，当我们需要自己给出一个数据集，需要设置一些特征值，然后根据不同的特征值赋上不同的权重值，通过计算最后的Total,每个人不同的得分，最后进行排序,取得前10个人的成绩，定义为与自己关系最近的10个人。</p>
 </blockquote>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h2>
+<ul>
 <li><b>确定个人的特征值</b>，其中包括levelRelation(关系层级)、isCouple(是否为情侣)、isParent(是否为父母)、isGrandParent(是否为祖父母)、isUncleOrAunt(是否为叔叔/阿姨)、isBrotherOrSister(是否为哥哥/姐姐)、phoneTime(电话时长)。</li>
 </ul>
-<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//提前給定一些人特征</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; data = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span><br><span class="line">Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(<span class="string">"levelRelation"</span>, <span class="number">2</span>);</span><br><span class="line">map.put(<span class="string">"isCouple"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isBrotherOrSister"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isParent"</span>, <span class="keyword">true</span>);</span><br><span class="line">map.put(<span class="string">"isGrandParent"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isUncleOrAunt"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"phoneTime"</span>, Math.random() * <span class="number">10</span>);</span><br><span class="line">data.add(map);</span><br></pre></td></tr></table></figure></p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//提前給定一些人特征</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; data = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span><br><span class="line">Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(<span class="string">"levelRelation"</span>, <span class="number">2</span>);</span><br><span class="line">map.put(<span class="string">"isCouple"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isBrotherOrSister"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isParent"</span>, <span class="keyword">true</span>);</span><br><span class="line">map.put(<span class="string">"isGrandParent"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"isUncleOrAunt"</span>, <span class="keyword">false</span>);</span><br><span class="line">map.put(<span class="string">"phoneTime"</span>, Math.random() * <span class="number">10</span>);</span><br><span class="line">data.add(map);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><b>获取总时长</b>,分配每个人在通话时间上的权重值</li>
 </ul>
@@ -97,5 +100,21 @@
 </article>
       </main>
     </div>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>

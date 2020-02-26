@@ -28,11 +28,11 @@
       <ul class="menu">
         
           <li class="menu-item">
-            <a href="/" class="menu-item-link">首页</a>
+            <a href="/" class="menu-item-link">Home</a>
           </li>
         
           <li class="menu-item">
-            <a href="/archives" class="menu-item-link">归档</a>
+            <a href="/archives" class="menu-item-link">Archives</a>
           </li>
         
           <li class="menu-item">
@@ -47,11 +47,11 @@
     <ul class="menu">
       
         <li class="menu-item">
-          <a href="/" class="menu-item-link">首页</a>
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
         <li class="menu-item">
-          <a href="/archives" class="menu-item-link">归档</a>
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
       
         <li class="menu-item">
@@ -72,15 +72,31 @@
     <span class="post-author"></span>
   </div>
   <div class="post-content">
-    <p>“ 不知道说些什么 “</p>
-<p>“ 最近爱吃橙子了 “</p>
-<p>“ …………………. “</p>
-<p>“ 最近有点累🤡L “</p>
-<p>“ 开始学 opencv 了 “</p>
+    <p>&quot; 不知道说些什么 &quot;</p>
+<p>&quot; 最近爱吃橙子了 &quot;</p>
+<p>&quot; … &quot;</p>
+<p>&quot; 最近有点累🤡L &quot;</p>
+<p>&quot; 开始学 opencv 了 &quot;</p>
 
   </div>
 </article>
       </main>
     </div>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>

@@ -28,11 +28,11 @@
       <ul class="menu">
         
           <li class="menu-item">
-            <a href="/" class="menu-item-link">首页</a>
+            <a href="/" class="menu-item-link">Home</a>
           </li>
         
           <li class="menu-item">
-            <a href="/archives" class="menu-item-link">归档</a>
+            <a href="/archives" class="menu-item-link">Archives</a>
           </li>
         
           <li class="menu-item">
@@ -47,11 +47,11 @@
     <ul class="menu">
       
         <li class="menu-item">
-          <a href="/" class="menu-item-link">首页</a>
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
         <li class="menu-item">
-          <a href="/archives" class="menu-item-link">归档</a>
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
       
         <li class="menu-item">
@@ -73,12 +73,15 @@
   </div>
   <div class="post-content">
     <blockquote>
-<p>⌛一直会不定期更一下…<br>上一个开始学习android端的json方面的相关知识，学了近两个周，因为每天要上课，所以会断断续续，接下来我想记录一下最近的学习成果以及 check in 一下。</p>
+<p>⌛一直会不定期更一下…<br>
+上一个开始学习android端的json方面的相关知识，学了近两个周，因为每天要上课，所以会断断续续，接下来我想记录一下最近的学习成果以及 check in 一下。</p>
 </blockquote>
-<h3 id="关于Json"><a href="#关于Json" class="headerlink" title="关于Json"></a>关于Json</h3><blockquote>
+<h3 id="关于json"><a class="markdownIt-Anchor" href="#关于json"></a> 关于Json</h3>
+<blockquote>
 <p>Json 是一种轻量级的数据交换格式,对于我而言它更像是一种用来存储数据的某种结构，在 Android 中能够通过给定的相关类，调用相关方法，可以达到获取数据，响应数据的效果。</p>
 </blockquote>
-<h2 id="Json相关信息"><a href="#Json相关信息" class="headerlink" title="Json相关信息"></a>Json相关信息</h2><blockquote>
+<h2 id="json相关信息"><a class="markdownIt-Anchor" href="#json相关信息"></a> Json相关信息</h2>
+<blockquote>
 <p>针对于Json来说万事万物都是对象，每个对象都会以键值对的形式来表达（不过对与 key 加双引号有点不太适应🙃），所以Json涉及一些语法</p>
 <ul>
 <li>对象表示为键值对</li>
@@ -87,14 +90,16 @@
 <li>方括号保存数组</li>
 </ul>
 </blockquote>
-<h2 id="了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构"><a href="#了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构" class="headerlink" title="了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构"></a>了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构</h2><h2 id="在Android开发中使用"><a href="#在Android开发中使用" class="headerlink" title="在Android开发中使用"></a>在Android开发中使用</h2><p>关于Http请求(<b>makeHttpRequest(URL url)</b>)：</p>
+<h2 id="了解这些帮助我们可以在获取json值的时候选择正确的存储结构"><a class="markdownIt-Anchor" href="#了解这些帮助我们可以在获取json值的时候选择正确的存储结构"></a> 了解这些帮助我们可以在获取Json值的时候，选择正确的存储结构</h2>
+<h2 id="在android开发中使用"><a class="markdownIt-Anchor" href="#在android开发中使用"></a> 在Android开发中使用</h2>
+<p>关于Http请求(<b>makeHttpRequest(URL url)</b>)：</p>
 <blockquote>
 <p>刚开始我们需要一些相关变量，所以我在这里先定义了☺</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String jsonResponse = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">if</span> (url == <span class="keyword">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> jsonResponse;</span><br><span class="line">&#125;</span><br><span class="line">HttpURLConnection urlConnection = <span class="keyword">null</span>;</span><br><span class="line">InputStream inputStream = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
-<li>需要构造url,将String类型的url地址转换成URL类型（catch….throws方法…）</li>
+<li>需要构造url,将String类型的url地址转换成URL类型（catch…throws方法…）</li>
 </ul>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//辅助新方法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> URL <span class="title">creatUrl</span><span class="params">(String stringUrl)</span></span>&#123;</span><br><span class="line">    URL url = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">       url = <span class="keyword">new</span> URL(stringUrl);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">        Log.i(<span class="string">"tag"</span>,<span class="string">"Problem about the URL"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -126,10 +131,30 @@
 <p>7.最后的最后将上面的四个函数需要我们整合在一起，建立一个名为fetchData（String requesturl）函数，将这些函数的返回值一一对应，return回一个自己所需要的储存数据的数据类型，在这里我返回了一个List&lt;&gt;类型的数据列表，并且髓外开放为public类型的函数</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法将所有步骤连接在一起，唯一的public函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  List&lt;Earthquake&gt; <span class="title">fetchEarthquakeData</span><span class="params">(String requestUrl)</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建url对象</span></span><br><span class="line">    URL url = creatUrl(requestUrl);</span><br><span class="line">    <span class="comment">//执行url的http请求并返回json响应</span></span><br><span class="line">    String jsonResponse = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        jsonResponse = makeHttpRequest(url);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        Log.e(LOG_TAG,<span class="string">"Problem about makehttpRequest"</span>,e);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从json响应数据提取相关信息并创建列表</span></span><br><span class="line">    List&lt;Earthquake&gt; earthquakes = extractFeatureFromJson(jsonResponse);</span><br><span class="line">    <span class="comment">//return 列表</span></span><br><span class="line">    <span class="keyword">return</span> earthquakes;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="以后有新的体会再来更新👺"><a href="#以后有新的体会再来更新👺" class="headerlink" title="以后有新的体会再来更新👺"></a>以后有新的体会再来更新👺</h2><h3 id="Stop-stoping"><a href="#Stop-stoping" class="headerlink" title="Stop stoping"></a>Stop stoping</h3><h3 id="开始看Gson和FastJson"><a href="#开始看Gson和FastJson" class="headerlink" title="开始看Gson和FastJson"></a>开始看Gson和FastJson</h3><h3 id="接上一条，看完了-ง-•-•-ง"><a href="#接上一条，看完了-ง-•-•-ง" class="headerlink" title="接上一条，看完了/(ง •_•)ง/"></a>接上一条，看完了/(ง •_•)ง/</h3>
+<h2 id="以后有新的体会再来更新"><a class="markdownIt-Anchor" href="#以后有新的体会再来更新"></a> 以后有新的体会再来更新👺</h2>
+<h3 id="stop-stoping"><a class="markdownIt-Anchor" href="#stop-stoping"></a> Stop stoping</h3>
+<h3 id="开始看gson和fastjson"><a class="markdownIt-Anchor" href="#开始看gson和fastjson"></a> 开始看Gson和FastJson</h3>
+<h3 id="接上一条看完了ง-_ง"><a class="markdownIt-Anchor" href="#接上一条看完了ง-_ง"></a> 接上一条，看完了/(ง •_•)ง/</h3>
+
   </div>
 </article>
       </main>
     </div>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
 </html>
